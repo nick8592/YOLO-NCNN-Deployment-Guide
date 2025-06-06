@@ -97,7 +97,8 @@ bin/onnx2ncnn models/yolov5s-sim.onnx models/yolov5s.param models/yolov5s.bin
 ```
 find the blob name
 ```bash
-/home/my-ncnn/models# grep -w -e 0=1 yolov5s.param
+cd /home/my-ncnn/models
+grep -w -e 0=1 yolov5s.param
 ```
 
 ```
