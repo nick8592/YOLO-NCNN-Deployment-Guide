@@ -18,7 +18,9 @@ cd work_dir
 git clone https://github.com/Tencent/ncnn.git
 ```
 ```bash
+cd ncnn
 mkdir build && cd build
 cmake ..
 make -j16
+make install
 ```
