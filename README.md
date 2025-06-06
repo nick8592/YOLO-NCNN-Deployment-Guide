@@ -92,5 +92,6 @@ cp /home/yolov5/yolov5s-sim.onnx /home/my-ncnn/models/
 ```
 converting model from `onnx` to ncnn's `param` & `bin`
 ```bash
+cd my-ncnn
 bin/onnx2ncnn models/yolov5s-sim.onnx models/yolov5s.param models/yolov5s.bin
 ```
