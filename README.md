@@ -121,10 +121,15 @@ create `CMakeLists.txt`
 ```cmake
 
 ```
-create build folder
+create `build` folder
 ```bash
 cd my-ncnn
 mkdir build && cd build
 cmake ..
 make -j16
+```
+create `images` folder   
+place test image in this folder
+```bash
+mkdir images
 ```
