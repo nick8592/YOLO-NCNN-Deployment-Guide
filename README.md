@@ -24,3 +24,14 @@ cmake ..
 make -j16
 make install
 ```
+run demo, verified installation
+```bash
+cd ../examples
+../build/examples/squeezenet ../images/256-ncnn.png
+```
+If show below results, then installation success
+```
+532 = 0.165649
+920 = 0.094421
+716 = 0.062408
+```
