@@ -72,3 +72,25 @@ Finish! Here is the difference:
 │ Model Size │ 28.0MiB        │ 28.0MiB          │
 └────────────┴────────────────┴──────────────────┘
 ```
+
+### onnx >>> ncnn
+create own project folder
+```bash
+mkdir my-ncnn && cd my-ncnn
+cd my-ncnn
+mkdir bin
+mkdir models
+```
+copy `onnx2ncnn` converting tools into own directory
+```bash
+cp /home/ncnn/build/tools/onnx/onnx2ncnn /home/my-ncnn/bin
+```
+copy YOLOv5 onnx model to project folder
+```bash
+cp /home/yolov5/yolov5s.onnx /home/my-ncnn/models/
+cp /home/yolov5/yolov5s-sim.onnx /home/my-ncnn/models/
+```
+converting model from `onnx` to ncnn's `param` & `bin`
+```bash
+bin/onnx2ncnn models/yolov5s-sim.onnx models/yolov5s.param models/yolov5s.bin
+```
