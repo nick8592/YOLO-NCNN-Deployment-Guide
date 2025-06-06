@@ -133,3 +133,18 @@ place test image in this folder
 ```bash
 mkdir images
 ```
+
+## Error handling
+```bash
+E: Failed to fetch https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/./libxnvctrl0_575.57.08-0ubuntu1_amd64.deb  File has unexpected size (11948 != 11944). Mirror sync in progress? [IP: 203.66.199.32 443]
+   Hashes of expected file:
+    - SHA512:78f7552b4f3d0de14bfe817cb4fd671ab7196126be827731c17b9c3fcb5a744546fc9d2d33b0566d57e38fab46218bd824ebbf8666f41686ac1a024f2d7851c7
+    - SHA256:82e3ad4f54080f3f3d5dad8b30a9eec11ef02e2bcea3ec7502e90a23b3157ae9
+    - SHA1:567a337d97493a3457d6f24a0566f5c266545aa1 [weak]
+    - MD5Sum:48d304c161b5c8b58f0ae2e0a8cc8356 [weak]
+    - Filesize:11944 [weak]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+```
+```bash
+rm /etc/apt/sources.list.d/cuda.list
+```
