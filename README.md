@@ -95,3 +95,16 @@ converting model from `onnx` to ncnn's `param` & `bin`
 cd my-ncnn
 bin/onnx2ncnn models/yolov5s-sim.onnx models/yolov5s.param models/yolov5s.bin
 ```
+find the blob name
+```bash
+/home/my-ncnn/models# grep -w -e 0=1 yolov5s.param
+```
+`/model.24/Transpose_output_0`, `/model.24/Transpose_1_output_0`, `/model.24/Transpose_2_output_0`
+are the blob name
+```
+Permute          /model.24/Transpose      1 1 /model.24/Reshape_output_0 /model.24/Transpose_output_0 0=1
+Permute          /model.24/Transpose_1    1 1 /model.24/Reshape_2_output_0 /model.24/Transpose_1_output_0 0=1
+Permute          /model.24/Transpose_2    1 1 /model.24/Reshape_4_output_0 /model.24/Transpose_2_output_0 0=1
+```
+
+### YOLOv5 post-processing
