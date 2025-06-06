@@ -109,3 +109,16 @@ Permute          /model.24/Transpose_2    1 1 /model.24/Reshape_4_output_0 /mode
 are the blob name
 
 ### YOLOv5 post-processing
+
+### Build own YOLOv5-ncnn
+create `CMakeLists.txt`
+```cmake
+
+```
+create build folder
+```bash
+cd my-ncnn
+mkdir build && cd build
+cmake ..
+make -j16
+```
