@@ -756,6 +756,11 @@ cmake ..
 make -j16
 ```
 
+### Inference
+```bash
+./bin/yolov5 ../test.jpg
+```
+
 ## Directory Tree
 ```bash
 root@0af71fa1fde7:/home# tree -L 2
