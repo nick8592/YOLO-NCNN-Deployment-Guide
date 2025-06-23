@@ -758,7 +758,8 @@ make -j16
 
 ### Inference
 ```bash
-./bin/yolov5 ../test.jpg
+cd bin
+./yolov5 ../test.jpg
 ```
 
 ## Directory Tree
