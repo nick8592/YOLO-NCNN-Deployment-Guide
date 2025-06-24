@@ -734,7 +734,7 @@ int main(int argc, char** argv)
 }
 ```
 
-### Build own YOLOv5-ncnn
+### Build for x86
 create `CMakeLists.txt`
 ```cmake
 project(yolov5)
