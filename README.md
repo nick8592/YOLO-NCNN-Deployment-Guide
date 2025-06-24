@@ -734,7 +734,7 @@ int main(int argc, char** argv)
 }
 ```
 
-## Build for x86
+## Build own YOLOv5
 create `CMakeLists.txt`
 ```cmake
 project(yolov5)
@@ -762,7 +762,8 @@ cd bin
 ./yolov5 ../test.jpg
 ```
 
-## Build for arm64
+---
+# Build for arm64
 ### Prepare cross compile shell environments
 ```bash
 source /path/to/environment-setup-aarch64-poky-linux
@@ -781,8 +782,8 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/aarch64-linux-gnu.toolchain.cmake \
 make -j$(nproc)
 ```
 
-
-## Directory Tree
+---
+# Directory Tree
 ```bash
 root@0af71fa1fde7:/home# tree -L 2
 .
@@ -863,7 +864,7 @@ root@0af71fa1fde7:/home# tree -L 2
 `-- yolov5.cpp
 ```
 
-## Error handling
+# Error handling
 ```bash
 E: Failed to fetch https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/./libxnvctrl0_575.57.08-0ubuntu1_amd64.deb  File has unexpected size (11948 != 11944). Mirror sync in progress? [IP: 203.66.199.32 443]
    Hashes of expected file:
