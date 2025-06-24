@@ -767,7 +767,9 @@ cd bin
 ### Prepare cross compile shell environments
 ```bash
 source /path/to/environment-setup-aarch64-poky-linux
-(e.g.) source ~/Renesas/rcar-xos/v3.35.0/tools/toolchains/poky/environment-setup-aarch64-poky-linux
+
+(e.g.)
+source ~/Renesas/rcar-xos/v3.35.0/tools/toolchains/poky/environment-setup-aarch64-poky-linux
 ```
 ### Compile
 ```bash
