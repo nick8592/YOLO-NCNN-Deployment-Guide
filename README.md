@@ -763,41 +763,6 @@ cd bin
 ```
 
 ---
-# Build for arm64
-### Prepare cross compile shell environments
-```bash
-source /path/to/environment-setup-aarch64-poky-linux
-
-(e.g.)
-source ~/Renesas/rcar-xos/v3.35.0/tools/toolchains/poky/environment-setup-aarch64-poky-linux
-```
-clone NCNN source code
-```bash
-cd my-ncnn-arm64
-git clone https://github.com/Tencent/ncnn.git
-```
-```bash
-cd ncnn
-mkdir build && cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/aarch64-linux-gnu.toolchain.cmake \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DNCNN_VULKAN=OFF \
-      ..
-make -j$(nproc)
-```
-### Compile
-```bash
-cd my-ncnn-arm64
-mkdir build && cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/aarch64-linux-gnu.toolchain.cmake \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DNCNN_VULKAN=OFF \
-      ..
-
-make -j$(nproc)
-```
-
----
 # Directory Tree
 ```bash
 root@0af71fa1fde7:/home# tree -L 2
