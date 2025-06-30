@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-* [Run Docker Container](#run-docker-container)
+* [Run Docker Container (optional)](#run-docker-container-optional)
 * [Install Dependencies](#install-dependencies)
 * [Build NCNN](#build-ncnn)
 * [Download and Setup PNNX](#download-and-setup-pnnx)
@@ -18,7 +18,7 @@
 
 ---
 
-## Run Docker Container
+## Run Docker Container (optional)
 
 ```bash
 docker run -it --gpus all -v $(pwd):/home container_id
