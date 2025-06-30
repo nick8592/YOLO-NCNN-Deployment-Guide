@@ -1,4 +1,4 @@
-# my-ncnn
+# YOLO-NCNN-Deployment-Guide
 
 run docker
 ```
