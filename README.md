@@ -1,6 +1,3 @@
-Here’s a cleaned-up, well-structured, and easier-to-read version of your README:
-
----
 
 # YOLO-NCNN Deployment Guide
 
@@ -73,7 +70,31 @@ If you see output similar to:
 
 Then the installation was successful.
 
+
 ---
+
+## Download and Setup pnnx
+
+1. **Download pnnx**
+
+```bash
+wget https://github.com/pnnx/pnnx/releases/download/20250530/pnnx-20250530-linux.zip
+```
+
+2. **Unzip pnnx**
+
+```bash
+unzip pnnx-20250530-linux.zip
+```
+
+3. **Run pnnx to convert TorchScript model**
+
+```bash
+./pnnx-20250530-linux/pnnx <your_model>.torchscript inputshape=[1,3,640,640]
+```
+
+---
+
 
 ## YOLOv5 Setup
 
@@ -112,8 +133,6 @@ python export.py --weights yolov5s.pt --include torchscript
 ### 4. Convert TorchScript to NCNN Using pnnx
 
 ```bash
-wget https://github.com/pnnx/pnnx/releases/download/20250530/pnnx-20250530-linux.zip
-unzip pnnx-20250530-linux.zip
 ./pnnx-20250530-linux/pnnx yolov5s.torchscript inputshape=[1,3,640,640]
 # Outputs yolov5s.ncnn.param and yolov5s.ncnn.bin
 ```
