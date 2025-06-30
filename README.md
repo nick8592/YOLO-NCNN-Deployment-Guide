@@ -254,7 +254,3 @@ Try this fix:
 ```bash
 rm /etc/apt/sources.list.d/cuda.list
 ```
-
----
-
-If you want me to help turn this into Markdown with badges, hyperlinks, or add usage examples, just say!
