@@ -8,6 +8,7 @@
 * [Run Docker Container](#run-docker-container)
 * [Install Dependencies](#install-dependencies)
 * [Build NCNN](#build-ncnn)
+* [Download and Setup PNNX](#download-and-setup-pnnx)
 * [YOLOv5 Setup](#yolov5-setup)
 * [YOLOv7 Setup](#yolov7-setup)
 * [Build Your Own YOLO Project with NCNN](#build-your-own-yolo-project-with-ncnn)
@@ -73,21 +74,21 @@ Then the installation was successful.
 
 ---
 
-## Download and Setup pnnx
+## Download and Setup PNNX
 
-1. **Download pnnx**
+1. **Download PNNX**
 
 ```bash
 wget https://github.com/pnnx/pnnx/releases/download/20250530/pnnx-20250530-linux.zip
 ```
 
-2. **Unzip pnnx**
+2. **Unzip PNNX**
 
 ```bash
 unzip pnnx-20250530-linux.zip
 ```
 
-3. **Run pnnx to convert TorchScript model**
+3. **Run PNNX to convert TorchScript model**
 
 ```bash
 ./pnnx-20250530-linux/pnnx <your_model>.torchscript inputshape=[1,3,640,640]
