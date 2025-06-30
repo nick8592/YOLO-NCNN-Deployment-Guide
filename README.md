@@ -278,10 +278,12 @@ root@0af71fa1fde7:/home# tree -L 2
 |   |-- CMakeFiles
 |   |-- Makefile
 |   `-- cmake_install.cmake
+|-- src
+|   |-- yolov5.cpp
+|   `-- yolov7.cpp
 |-- CMakeLists.txt
-|-- test.jpg
-|-- yolov5.cpp
-`-- yolov7.cpp
+`-- test.jpg
+
 ```
 
 ---
