@@ -27,10 +27,22 @@ docker run -it --gpus all -v $(pwd):/home container_id
 
 ## Install Dependencies
 
+### Install Python, PIP
 ```bash
 apt update && apt upgrade -y
 apt install python3 python3-pip -y
 apt install build-essential git cmake wget libprotobuf-dev protobuf-compiler libomp-dev libopencv-dev -y
+```
+
+---
+
+### Install PyTorch
+
+*Adjust the PyTorch version for your CUDA version if needed.*
+
+```bash
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
+pip install pandas opencv-python-headless pyyaml tqdm matplotlib seaborn onnx onnxsim protobuf
 ```
 
 ---
@@ -54,7 +66,7 @@ make -j16
 make install
 ```
 
-### Verify Installation by Running Demo
+### Verify Installation
 
 ```bash
 cd ../examples
@@ -99,30 +111,25 @@ unzip pnnx-20250530-linux.zip
 
 ## YOLOv5 Setup
 
-### 1. Install PyTorch and Dependencies
-
-*Adjust the PyTorch version for your CUDA version if needed.*
-
-```bash
-pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
-pip install pandas opencv-python-headless pyyaml tqdm matplotlib seaborn onnx onnxsim protobuf
-```
-
----
-
-### 2. Download YOLOv5 `.pt` Weights
+### 1. Clone YOLOv5 Repository
 
 ```bash
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
 git checkout v7.0
 pip install -r requirements.txt --user
+```
+
+---
+
+### 2. Download Pretrained Weights
+```bash
 wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s.pt
 ```
 
 ---
 
-### 3. Export Model to TorchScript
+### 2. Export Model to TorchScript
 
 ```bash
 python export.py --weights yolov5s.pt --include torchscript
@@ -131,7 +138,7 @@ python export.py --weights yolov5s.pt --include torchscript
 
 ---
 
-### 4. Convert TorchScript to NCNN Using pnnx
+### 3. Convert TorchScript to NCNN Using PNNX
 
 ```bash
 ./pnnx-20250530-linux/pnnx yolov5s.torchscript inputshape=[1,3,640,640]
@@ -140,7 +147,7 @@ python export.py --weights yolov5s.pt --include torchscript
 
 ---
 
-### 5. Copy NCNN Model Files to Project
+### 4. Copy NCNN Model Files to Project
 
 ```bash
 cd work_dir
@@ -175,7 +182,7 @@ python models/export.py --weights yolov7.pt
 # Generates yolov7.torchscript.pt
 ```
 
-### 4. Convert TorchScript to NCNN Using pnnx
+### 4. Convert TorchScript to NCNN Using PNNX
 
 ```bash
 ./pnnx-20250530-linux/pnnx yolov7.torchscript.pt inputshape=[1,3,640,640]
