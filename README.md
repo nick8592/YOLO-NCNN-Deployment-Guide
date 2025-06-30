@@ -246,19 +246,32 @@ root@0af71fa1fde7:/home# tree -L 2
 .
 |-- CMakeLists.txt
 |-- README.md
-|-- models
-|   |-- yolov5s.ncnn.bin
-|   |-- yolov5s.ncnn.param
-|   |-- yolov7.torchscript.ncnn.bin
-|   `-- yolov7.torchscript.ncnn.param
 |-- ncnn
+|   |-- LICENSE.txt
+|   |-- MANIFEST.in
+|   |-- README.md
+|   `-- ..
 |-- pnnx-20250403-linux
 |   |-- README.md
 |   `-- pnnx
 |-- test.jpg
 |-- yolov5
-|-- yolov5.cpp
+|   |-- CONTRIBUTING.md
+|   |-- LICENSE
+|   |-- README.md
+|   `-- ..
 |-- yolov7
+|   |-- LICENSE.md
+|   |-- README.md
+|   |-- cfg
+|   |-- data
+|   `-- ..
+|-- models
+|   |-- yolov5s.ncnn.bin
+|   |-- yolov5s.ncnn.param
+|   |-- yolov7.torchscript.ncnn.bin
+|   `-- yolov7.torchscript.ncnn.param
+|-- yolov5.cpp
 `-- yolov7.cpp
 ```
 
