@@ -11,6 +11,7 @@
 * [Download and Setup PNNX](#download-and-setup-pnnx)
 * [YOLOv5 Setup](#yolov5-setup)
 * [YOLOv7 Setup](#yolov7-setup)
+* [Download Pretrained NCNN Models (alternative)](#download-pretrained-ncnn-models-alternative)
 * [Build Your Own YOLO Project with NCNN](#build-your-own-yolo-project-with-ncnn)
 * [Directory Structure](#directory-structure)
 * [Error Handling](#error-handling)
@@ -190,6 +191,17 @@ python models/export.py --weights yolov7.pt
 # yolov7.torchscript.ncnn.param
 # yolov7.torchscript.ncnn.bin
 ```
+---
+
+
+## Download Pretrained NCNN Models (alternative)
+### Available Models
+
+| Model  | Hugging Face Link                                                                       | Files Included   |
+| ------ | --------------------------------------------------------------------------------------- | ---------------- |
+| YOLOv5 | [nickpai/yolo-ncnn/yolov5](https://huggingface.co/nickpai/yolo-ncnn/tree/main/yolov5) | .param, .bin |
+| YOLOv7 | [nickpai/yolo-ncnn/yolov7](https://huggingface.co/nickpai/yolo-ncnn/tree/main/yolov7) | .param, .bin |
+
 ---
 
 ## Build Your Own YOLO Project with NCNN
