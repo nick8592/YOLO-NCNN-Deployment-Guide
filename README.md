@@ -130,7 +130,7 @@ wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s.pt
 
 ---
 
-### 2. Export Model to TorchScript
+### 3. Export Model to TorchScript
 
 ```bash
 python export.py --weights yolov5s.pt --include torchscript
@@ -139,24 +139,11 @@ python export.py --weights yolov5s.pt --include torchscript
 
 ---
 
-### 3. Convert TorchScript to NCNN Using PNNX
+### 4. Convert TorchScript to NCNN Using PNNX
 
 ```bash
 ./pnnx-20250530-linux/pnnx yolov5s.torchscript inputshape=[1,3,640,640]
 # Outputs yolov5s.ncnn.param and yolov5s.ncnn.bin
-```
-
----
-
-### 4. Copy NCNN Model Files to Project
-
-```bash
-cd work_dir
-mkdir -p models
-cd models
-
-cp /home/yolov5/yolov5s.ncnn.param .
-cp /home/yolov5/yolov5s.ncnn.bin .
 ```
 
 ---
