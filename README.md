@@ -269,6 +269,15 @@ root@0af71fa1fde7:/home# tree -L 2
 |   |-- yolov5s.ncnn.param
 |   |-- yolov7.torchscript.ncnn.bin
 |   `-- yolov7.torchscript.ncnn.param
+|-- bin
+|   |-- output.jpg
+|   |-- yolov5
+|   `-- yolov7
+|-- build
+|   |-- CMakeCache.txt
+|   |-- CMakeFiles
+|   |-- Makefile
+|   `-- cmake_install.cmake
 |-- CMakeLists.txt
 |-- test.jpg
 |-- yolov5.cpp
