@@ -234,7 +234,6 @@ root@0af71fa1fde7:/home# tree -L 2
 |-- yolov5.cpp
 |-- yolov7
 `-- yolov7.cpp
-
 ```
 
 ---
