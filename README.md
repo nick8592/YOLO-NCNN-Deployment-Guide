@@ -37,90 +37,142 @@ If show below results, then installation success
 ```
 
 ## YOLOv5
-### Install pytorch
-depends on your device
+
+### 1. Install PyTorch and Dependencies
+
+*Note: Adjust the PyTorch install command according to your device and CUDA version.*
+
 ```bash
 pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
 pip install pandas opencv-python-headless pyyaml tqdm matplotlib seaborn onnx onnxsim protobuf
 ```
 
-### Download `.pt` weights
+---
+
+### 2. Download YOLOv5 `.pt` Weights
+
 ```bash
-# checkout yolov5 v7.0 project
+# Clone YOLOv5 repository and checkout v7.0
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
 git checkout v7.0
 
-# install requirements
+# Install requirements
 pip install -r requirements.txt --user
 
-# download yolov5s weight
+# Download pretrained weights
 wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s.pt
 ```
 
-### Export torchscript
+---
+
+### 3. Export Model to TorchScript
+
 ```bash
-# export to torchscript, result saved to yolov5s.torchscript
 python export.py --weights yolov5s.pt --include torchscript
+# Output file: yolov5s.torchscript
 ```
 
-### use pnnx convert
+---
+
+### 4. Convert TorchScript to NCNN Using pnnx
+
 ```bash
-# download latest pnnx from https://github.com/pnnx/pnnx/releases
+# Download latest pnnx release
 wget https://github.com/pnnx/pnnx/releases/download/20250530/pnnx-20250530-linux.zip
 unzip pnnx-20250530-linux.zip
 
-# convert torchscript to pnnx and ncnn, result saved to yolov5s.ncnn.param yolov5s.ncnn.bin
+# Convert TorchScript model to NCNN format
 ./pnnx-20250530-linux/pnnx yolov5s.torchscript inputshape=[1,3,640,640]
+# Output files: yolov5s.ncnn.param, yolov5s.ncnn.bin
 ```
 
-### copy `.param`, `.bin`
+---
+
+### 5. Copy NCNN Model Files
+
 ```bash
 cd work_dir
-mkdir models && cd models
+mkdir -p models
+cd models
 
-cp /home/yolov5/yolov5s.ncnn.param /home/models/yolov5s.ncnn.param
-cp /home/yolov5/yolov5s.ncnn.bin /home/models/yolov5s.ncnn.bin
+cp /home/yolov5/yolov5s.ncnn.param .
+cp /home/yolov5/yolov5s.ncnn.bin .
 ```
 
-### build own YOLOv5 project
-create `CMakeLists.txt`
+---
+
+## YOLOv7
+
+### Converting YOLOv7 `.pt` Model to NCNN Format
+
+#### 1. Clone YOLOv7 Repository
+
+```bash
+git clone https://github.com/WongKinYiu/yolov7
+cd yolov7
+```
+
+#### 2. Download Pretrained Weights
+
+```bash
+wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt
+```
+
+#### 3. Export to TorchScript
+
+```bash
+python models/export.py --weights yolov7.pt
+# Output file: yolov7.torchscript.pt
+```
+
+#### 4. Convert TorchScript to NCNN Using pnnx
+
+```bash
+./pnnx-20250530-linux/pnnx yolov7.torchscript.pt inputshape=[1,3,640,640]
+# Output files:
+# - yolov7.torchscript.ncnn.param
+# - yolov7.torchscript.ncnn.bin
+```
+
+---
+
+## Building Your Own YOLOv5 Project with NCNN
+
+### 1. Create `CMakeLists.txt`
+
 ```cmake
 project(yolov5)
-# TODO change me to your ncnn installation path
+
+# TODO: Change to your NCNN installation path
 set(ncnn_DIR "/home/ncnn/build/install/lib/cmake/ncnn")
 find_package(ncnn REQUIRED)
 
 find_package(OpenCV REQUIRED)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 add_executable(yolov5 yolov5.cpp)
 target_link_libraries(yolov5 ncnn ${OpenCV_LIBS})
 ```
 
-## Build own YOLOv5
-create `CMakeLists.txt`
-```cmake
-project(yolov5)
-# TODO change me to your ncnn installation path
-set(ncnn_DIR "/home/ncnn/build/install/lib/cmake/ncnn")
-find_package(ncnn REQUIRED)
+---
 
-find_package(OpenCV REQUIRED)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+### 2. Build Project
 
-add_executable(yolov5 yolov5.cpp)
-target_link_libraries(yolov5 ncnn ${OpenCV_LIBS})
-```
-create `build` folder
 ```bash
 cd my-ncnn
-mkdir build && cd build
+mkdir -p build
+cd build
+
 cmake ..
 make -j16
 ```
 
-### Inference
+---
+
+### 3. Run Inference
+
 ```bash
 cd bin
 ./yolov5 ../test.jpg
@@ -208,44 +260,6 @@ root@0af71fa1fde7:/home# tree -L 2
 `-- yolov5.cpp
 ```
 
-## YOLOv7
-### Converting YOLOv7 `.pt` Model to NCNN Format
-
-This section guides you through the process of converting a YOLOv7 PyTorch `.pt` model to the **NCNN** inference format.
-
-#### 1. Clone YOLOv7 Repository
-
-```bash
-git clone https://github.com/WongKinYiu/yolov7
-cd yolov7
-```
-
-#### 2. Download Pretrained Weights
-
-```bash
-wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt
-```
-
-#### 3. Export to TorchScript
-
-Use the provided export script to convert the `.pt` model to TorchScript format:
-
-```bash
-python models/export.py --weights yolov7.pt
-```
-
-This will generate a file named `yolov7.torchscript.pt`.
-
-#### 4. Convert TorchScript to NCNN Using `pnnx`
-
-```bash
-./pnnx-20250530-linux/pnnx yolov7.torchscript.pt inputshape=[1,3,640,640]
-```
-
-This will generate the following NCNN files:
-
-* `yolov7.torchscript.ncnn.param` — model architecture
-* `yolov7.torchscript.ncnn.bin` — model weights
 
 
 # Error handling
