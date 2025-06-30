@@ -844,6 +844,46 @@ root@0af71fa1fde7:/home# tree -L 2
 `-- yolov5.cpp
 ```
 
+## YOLOv7
+### Converting YOLOv7 `.pt` Model to NCNN Format
+
+This section guides you through the process of converting a YOLOv7 PyTorch `.pt` model to the **NCNN** inference format.
+
+#### 1. Clone YOLOv7 Repository
+
+```bash
+git clone https://github.com/WongKinYiu/yolov7
+cd yolov7
+```
+
+#### 2. Download Pretrained Weights
+
+```bash
+wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt
+```
+
+#### 3. Export to TorchScript
+
+Use the provided export script to convert the `.pt` model to TorchScript format:
+
+```bash
+python models/export.py --weights yolov7.pt
+```
+
+This will generate a file named `yolov7.torchscript.pt`.
+
+#### 4. Convert TorchScript to NCNN Using `pnnx`
+
+```bash
+./pnnx-20250530-linux/pnnx yolov7.torchscript.pt inputshape=[1,3,640,640]
+```
+
+This will generate the following NCNN files:
+
+* `yolov7.torchscript.ncnn.param` — model architecture
+* `yolov7.torchscript.ncnn.bin` — model weights
+
+
 # Error handling
 ```bash
 E: Failed to fetch https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/./libxnvctrl0_575.57.08-0ubuntu1_amd64.deb  File has unexpected size (11948 != 11944). Mirror sync in progress? [IP: 203.66.199.32 443]
